@@ -58,9 +58,6 @@ This project implements an **ELT (Extract, Load, Transform) data pipeline** usin
 4. **Create optimized views for reporting.**
 5. **Trigger Looker Studio dashboards and schedule reports.**
 
-
-## **File Structure**
-
 ![image](https://github.com/user-attachments/assets/8e8b8373-9d2a-417b-9fd9-5f42171c06f8)
 
 
