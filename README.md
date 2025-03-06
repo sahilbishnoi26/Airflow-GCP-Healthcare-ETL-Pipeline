@@ -1,64 +1,65 @@
-# ELT Data Pipeline with GCP and Airflow
+# **Airflow ELT Pipeline for Global Health Data**
 
-This project demonstrates how to build an **ELT (Extract, Load, Transform)** data pipeline to process **1 million records** using **Google Cloud Platform (GCP)** and **Apache Airflow**. The pipeline extracts data from Google Cloud Storage (GCS), loads it into BigQuery, and transforms it to create country-specific tables and views for analysis.
+## **Project Overview**
+This project implements an **ELT (Extract, Load, Transform) data pipeline** using **Apache Airflow** on **Google Cloud Platform (GCP)**. It processes **1 million records** of global health statistics, loads them into **BigQuery**, transforms the data, and generates **Looker Studio dashboards** for analysis.
+
+## **Key Features**
+- **ELT Pipeline:** Extracts data from a CSV file, loads it into **BigQuery**, and applies transformations.
+- **Apache Airflow Orchestration:** Configured on a **Google Compute Engine VM** for cost efficiency.
+- **BigQuery Staging and Transformation Layers:** Ensures **data integrity, optimized querying, and reduced costs**.
+- **Looker Studio Dashboards:** Generates interactive reports for country-specific health insights.
+- **Automated Email Reports:** Scheduled Looker Studio reports are emailed to stakeholders.
+
+## **Architecture**
+1. **Extract:** Read **1M records** from a CSV file in **Google Cloud Storage (GCS)**.
+2. **Load:** Transfer raw data into a **BigQuery staging dataset**.
+3. **Transform:**
+   - Create separate tables for each country in a **transformation dataset**.
+   - Create **views** for optimized reporting.
+4. **Reporting:** Use **Looker Studio** for dashboards and **automate report emails**.
+
+## **Technology Stack**
+- **Apache Airflow** (orchestration)
+- **Google Cloud Platform (GCP)**
+  - **Compute Engine** (Airflow VM)
+  - **Cloud Storage (GCS)** (data source)
+  - **BigQuery** (data warehouse)
+  - **Looker Studio** (BI visualization)
+- **Python** (Airflow DAGs & scripting)
+
+## **Setup Instructions**
+1. **Deploy Airflow on Google Compute Engine:**
+   - Install dependencies (`Python 3`, `pip`, `virtualenv`).
+   - Install and configure **Apache Airflow**.
+   - Allow necessary firewall rules for **port 8080**.
+   - Start **Airflow scheduler & webserver**.
+
+2. **Configure Cloud Storage and BigQuery:**
+   - Upload the CSV dataset to **Google Cloud Storage**.
+   - Create **staging, transform, and reporting datasets** in **BigQuery**.
+
+3. **Deploy the Airflow DAGs:**
+   - Place DAG scripts in the **Airflow DAGs directory**.
+   - Restart Airflow to detect the DAGs.
+
+4. **Trigger the Pipeline:**
+   - Monitor the DAG execution in **Airflow UI**.
+   - Verify the **staging, transformation, and reporting layers** in BigQuery.
+
+5. **Build Looker Studio Reports:**
+   - Connect **Looker Studio** to the **BigQuery views**.
+   - Create country-specific dashboards.
+   - Schedule automated report emails.
+
+## **DAG Workflow**
+1. **Check if the source CSV file exists in GCS.**
+2. **Load data into BigQuery staging dataset.**
+3. **Transform and split data into country-specific tables.**
+4. **Create optimized views for reporting.**
+5. **Trigger Looker Studio dashboards and schedule reports.**
 
 
----
-
-## Features
-
-- Extract data from GCS in CSV format.
-- Load raw data into a staging table in BigQuery.
-- Transform data into country-specific tables and reporting views.
-- Use Apache Airflow to orchestrate the pipeline.
-- Generate clean and structured datasets for analysis.
-
----
-
-## Architecture
-
-![image](https://github.com/user-attachments/assets/87cdc79c-c9a1-4c4d-887a-ab6007394bc7)
-
-
-### Workflow
-1. **Extract**: Check for file existence in GCS.
-2. **Load**: Load raw CSV data into a BigQuery staging table.
-3. **Transform**:
-   - Create country-specific tables in the transform layer.
-   - Generate reporting views for each country with filtered insights.
-
-### Data Layers
-1. **Staging Layer**: Raw data from the CSV file.
-2. **Transform Layer**: Cleaned and transformed tables.
-3. **Reporting Layer**: Views optimized for analysis and reporting.
-
----
-
-## Requirements
-
-### Tools and Services
-- **Google Cloud Platform (GCP)**:
-  - Google Compute Engine ( for Airflow )
-  - BigQuery
-  - Cloud Storage
-- **Apache Airflow**:
-  - Airflow with Google Cloud providers
-
-
----
-
-## Setup Instructions
-
-### Prerequisites
-1. A Google Cloud project with:
-   - BigQuery and Cloud Storage enabled.
-   - Service account with required permissions.
-2. Apache Airflow installed.
-3. Use Blog for Airflow Installation on VM - https://www.techtrapture.com/blogs/673a2625dd155b000b7cdb3b
-
-## End Result
-
-### Airflow Pipeline
+## **File Structure**
 
 ![image](https://github.com/user-attachments/assets/8e8b8373-9d2a-417b-9fd9-5f42171c06f8)
 
