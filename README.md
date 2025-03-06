@@ -18,6 +18,8 @@ This project implements an **ELT (Extract, Load, Transform) data pipeline** usin
    - Create **views** for optimized reporting.
 4. **Reporting:** Use **Looker Studio** for dashboards and **automate report emails**.
 
+![image](https://github.com/user-attachments/assets/87cdc79c-c9a1-4c4d-887a-ab6007394bc7)
+
 ## **Technology Stack**
 - **Apache Airflow** (orchestration)
 - **Google Cloud Platform (GCP)**
